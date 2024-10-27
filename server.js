@@ -34,7 +34,7 @@ const config = {
     baseURL: "https://web-lab1-w9i3.onrender.com/"
 };
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
   config.baseURL = `http://localhost:${port}`;
 }
