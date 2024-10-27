@@ -1,12 +1,19 @@
 const dotenv = require('dotenv');
 const express = require('express');
-const http = require('http');
 const logger = require('morgan');
 const path = require('path');
 const router = require('./routes/index');
 const { auth } = require('express-openid-connect');
-const reload = require("reload")
-const db = require("./routes/db")
+const reload = require("reload");
+const db = require("./routes/db");
+const fs = require("fs");
+const https = require("https");
+
+
+const options = {
+  key: fs.readFileSync('path/to/server.key'), // Path to your private key file
+  cert: fs.readFileSync('path/to/server.cert') // Path to your certificate file
+};
 
 dotenv.load();
 
@@ -45,7 +52,7 @@ app.use('/', router);
 
 
 reload(app).then((reloadReturn) => {
-    http.createServer(app).listen(port, () => {
+    https.createServer(options, app).listen(port, () => {
         console.log(`Listening on ${config.baseURL}`);
     })
 }).catch((err) => {
