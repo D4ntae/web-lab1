@@ -7,7 +7,7 @@ const {
 const QRCode = require('qrcode');
 const { auth } = require('express-oauth2-jwt-bearer');
 
-const URL = "http://localhost:3000"
+const URL = "https://web-lab1-w9i3.onrender.com"
 
 router.get('/', async (req, res, next) => {
     let numOfTickets = (await db.any("SELECT * FROM tickets")).length;
@@ -26,7 +26,7 @@ router.get('/profile', requiresAuth(), (req, res, next) => {
 });
 
 const jwtCheck = auth({
-  audience: 'http://localhost:3000/generate',
+  audience: `${URL}/generate`,
   issuerBaseURL: 'https://dev-3lxt6450sbc3gc2m.eu.auth0.com/',
   tokenSigningAlg: 'RS256'
 });
