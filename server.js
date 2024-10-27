@@ -31,7 +31,7 @@ app.use(express.json());
 const config = {
   authRequired: false,
   auth0Logout: true,
-  baseURL: "0.0.0.0"
+  baseURL: "https://web-lab1-w9i3.onrender.com"
 };
 
 const port = process.env.PORT || 10000;
@@ -52,8 +52,8 @@ app.use('/', router);
 
 
 reload(app).then((reloadReturn) => {
-    https.createServer(options, app).listen(port, () => {
-        console.log(`Listening on ${config.baseURL}`);
+    https.createServer(options, app).listen(port, "0.0.0.0", () => {
+        console.log(`Listening on 0.0.0.0:${port}`);
     })
 }).catch((err) => {
     console.error("Coulnd start reload", err);
