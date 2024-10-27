@@ -11,8 +11,8 @@ const https = require("https");
 
 
 const options = {
-  key: fs.readFileSync('path/to/server.key'), // Path to your private key file
-  cert: fs.readFileSync('path/to/server.cert') // Path to your certificate file
+  key: fs.readFileSync('server.key'), 
+  cert: fs.readFileSync('server.cert')
 };
 
 dotenv.load();
