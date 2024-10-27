@@ -31,7 +31,7 @@ app.use(express.json());
 const config = {
   authRequired: false,
   auth0Logout: true,
-    baseURL: "https://web-lab1-w9i3.onrender.com/"
+  baseURL: "0.0.0.0"
 };
 
 const port = process.env.PORT || 10000;
